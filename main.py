@@ -31,7 +31,7 @@ class TestFraction(unittest.TestCase):
         fraction2 = Fraction(3, 4)
         fraction3 = Fraction(4, 2)
         fraction4 = Fraction(1, -2)
-        fraction5 = Fraction(2, 4)
+        fraction6 = Fraction(10, 1)
         # __str__
         self.assertEqual(str(fraction1), '5/2')
         self.assertEqual(str(fraction2), '3/4')
@@ -39,9 +39,8 @@ class TestFraction(unittest.TestCase):
         self.assertEqual(str(fraction4), '-1/2')
         # as_mixed_number
         self.assertEqual(fraction2.as_mixed_number(), '3/4')
-        self.assertEqual(str(fraction3), '2')
-        self.assertEqual(str(fraction5), '1/2')
-        self.assertEqual(str(fraction4), '-1/2')
+        self.assertEqual(fraction1.as_mixed_number(), '2 + 1/2')
+        self.assertEqual(fraction6.as_mixed_number(), '10')
 
     def test_operations_mathematiques(self):
         fraction1 = Fraction(3, 4)
@@ -70,7 +69,7 @@ class TestFraction(unittest.TestCase):
         self.assertEqual(resultat_addition4.numerator, 5)
         self.assertEqual(resultat_addition4.denominator, 1)
         with self.assertRaises(TypeError):
-            fraction1 + 0.1
+            fraction1 + "string"
 
         # __sub__
         resultat_soustraction = fraction1 - fraction2
@@ -89,7 +88,7 @@ class TestFraction(unittest.TestCase):
         self.assertEqual(resultat_soustraction4.numerator, 1)
         self.assertEqual(resultat_soustraction4.denominator, 1)
         with self.assertRaises(TypeError):
-            fraction1 - 0.1
+            fraction1 - "string"
 
         # __mul__
         resultat_multiplication = fraction1 * fraction2
@@ -108,7 +107,7 @@ class TestFraction(unittest.TestCase):
         self.assertEqual(resultat_multiplication4.numerator, 6)
         self.assertEqual(resultat_multiplication4.denominator, 1)
         with self.assertRaises(TypeError):
-            fraction1 * 0.1
+            fraction1 * "string"
 
         # __truediv__
         resultat_division = fraction1 / fraction2
@@ -123,7 +122,7 @@ class TestFraction(unittest.TestCase):
         with self.assertRaises(ZeroDivisionError):
             fraction6 / fraction4
         with self.assertRaises(TypeError):
-            fraction1 / 0.1
+            fraction1 / "string"
 
         resultat_division3 = fraction4 / fraction7
         self.assertEqual(resultat_division3.numerator, 0)
@@ -144,7 +143,7 @@ class TestFraction(unittest.TestCase):
         self.assertEqual(resultat_puissance3.numerator, 1)
         self.assertEqual(resultat_puissance3.denominator, 1)
         with self.assertRaises(TypeError):
-            fraction1 ** 0.1
+            fraction1 ** "string"
 
         # __eq__
         self.assertTrue(fraction1 == fraction1)

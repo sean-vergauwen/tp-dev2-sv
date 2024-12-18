@@ -1,7 +1,7 @@
 #%%
 from math import gcd
 import unittest
-import pydoc
+#import pydoc
 
 class Fraction:
     """Class representing a fraction and operations on it.
@@ -69,7 +69,7 @@ class Fraction:
         remainder = abs(self._num) % self._den
         if remainder == 0:
             return f"{integer_part}"
-        return f"{integer_part} {remainder}/{self._den}" if integer_part != 0 else f"{self._num}/{self._den}"
+        return f"{integer_part} + {remainder}/{self._den}" if integer_part != 0 else f"{self._num}/{self._den}"
 
     # ------------------ Operators overloading ------------------
 
@@ -218,8 +218,3 @@ class Fraction:
         """
         diff = abs(self._num * other._den - other._num * self._den)
         return diff == 1
-
-
-if __name__ == '__main__':
-    pydoc.writedoc(Fraction)
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
