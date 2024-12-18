@@ -12,7 +12,7 @@ class Fraction:
     """
 
     def __init__(self, num: int = 0, den: int = 1):
-        """This builds a fraction based on some numerator and denominator.
+        """This builds a fraction based on a numerator and a denominator.
 
         PRE:
             - den != 0 (division by zero is not allowed)

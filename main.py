@@ -4,7 +4,7 @@ import coverage
 
 
 class TestFraction(unittest.TestCase):
-    def testCreationFraction(self):
+    def test_creation_fraction(self):
         fraction = Fraction(3, 4)
         fraction1 = Fraction(2, 4)
         fraction2 = Fraction(1, -3)
@@ -26,11 +26,12 @@ class TestFraction(unittest.TestCase):
         self.assertEqual(fraction5.numerator, 2)
         self.assertEqual(fraction5.denominator, 1)
 
-    def testTextualRepr(self):
+    def test_textual_repr(self):
         fraction1 = Fraction(5, 2)
         fraction2 = Fraction(3, 4)
         fraction3 = Fraction(4, 2)
         fraction4 = Fraction(1, -2)
+        fraction5 = Fraction(2, 4)
         # __str__
         self.assertEqual(str(fraction1), '5/2')
         self.assertEqual(str(fraction2), '3/4')
@@ -39,9 +40,10 @@ class TestFraction(unittest.TestCase):
         # as_mixed_number
         self.assertEqual(fraction2.as_mixed_number(), '3/4')
         self.assertEqual(str(fraction3), '2')
+        self.assertEqual(str(fraction5), '1/2')
         self.assertEqual(str(fraction4), '-1/2')
 
-    def testOperationsMathematiques(self):
+    def test_operations_mathematiques(self):
         fraction1 = Fraction(3, 4)
         fraction2 = Fraction(2, 3)
         fraction3 = Fraction(1, -3)
@@ -52,94 +54,105 @@ class TestFraction(unittest.TestCase):
         fraction8 = Fraction(-4, 2)
         fraction9 = Fraction(-9,3)
         # __add__
-        resultatAddition = fraction1 + fraction2
-        self.assertEqual(resultatAddition.numerator, 17)
-        self.assertEqual(resultatAddition.denominator, 12)
-        resultatAddition1 = fraction1 + fraction3
-        self.assertEqual(resultatAddition1.numerator, 5)
-        self.assertEqual(resultatAddition1.denominator, 12)
-        resultatAddition2 = fraction2 + fraction4
-        self.assertEqual(resultatAddition2.numerator, 2)
-        self.assertEqual(resultatAddition2.denominator, 3)
-        resultatAddition3 = fraction4 + fraction5
-        self.assertEqual(resultatAddition3.numerator, 0)
-        self.assertEqual(resultatAddition3.denominator, 1)
-        resultatAddition4 = fraction6 + fraction7
-        self.assertEqual(resultatAddition4.numerator, 5)
-        self.assertEqual(resultatAddition4.denominator, 1)
+        resultat_addition = fraction1 + fraction2
+        self.assertEqual(resultat_addition.numerator, 17)
+        self.assertEqual(resultat_addition.denominator, 12)
+        resultat_addition1 = fraction1 + fraction3
+        self.assertEqual(resultat_addition1.numerator, 5)
+        self.assertEqual(resultat_addition1.denominator, 12)
+        resultat_addition2 = fraction2 + fraction4
+        self.assertEqual(resultat_addition2.numerator, 2)
+        self.assertEqual(resultat_addition2.denominator, 3)
+        resultat_addition3 = fraction4 + fraction5
+        self.assertEqual(resultat_addition3.numerator, 0)
+        self.assertEqual(resultat_addition3.denominator, 1)
+        resultat_addition4 = fraction6 + fraction7
+        self.assertEqual(resultat_addition4.numerator, 5)
+        self.assertEqual(resultat_addition4.denominator, 1)
+        with self.assertRaises(TypeError):
+            fraction1 + 0.1
 
         # __sub__
-        resultatSoustraction = fraction1 - fraction2
-        self.assertEqual(resultatSoustraction.numerator, 1)
-        self.assertEqual(resultatSoustraction.denominator, 12)
-        resultatSoustraction1 = fraction1 - fraction3
-        self.assertEqual(resultatSoustraction1.numerator, 13)
-        self.assertEqual(resultatSoustraction1.denominator, 12)
-        resultatSoustraction2 = fraction2 - fraction4
-        self.assertEqual(resultatSoustraction2.numerator, 2)
-        self.assertEqual(resultatSoustraction2.denominator, 3)
-        resultatSoustraction3 = fraction4 - fraction5
-        self.assertEqual(resultatSoustraction3.numerator, 0)
-        self.assertEqual(resultatSoustraction3.denominator, 1)
-        resultatSoustraction4 = fraction8 - fraction9
-        self.assertEqual(resultatSoustraction4.numerator, 1)
-        self.assertEqual(resultatSoustraction4.denominator, 1)
+        resultat_soustraction = fraction1 - fraction2
+        self.assertEqual(resultat_soustraction.numerator, 1)
+        self.assertEqual(resultat_soustraction.denominator, 12)
+        resultat_soustraction1 = fraction1 - fraction3
+        self.assertEqual(resultat_soustraction1.numerator, 13)
+        self.assertEqual(resultat_soustraction1.denominator, 12)
+        resultat_soustraction2 = fraction2 - fraction4
+        self.assertEqual(resultat_soustraction2.numerator, 2)
+        self.assertEqual(resultat_soustraction2.denominator, 3)
+        resultat_soustraction3 = fraction4 - fraction5
+        self.assertEqual(resultat_soustraction3.numerator, 0)
+        self.assertEqual(resultat_soustraction3.denominator, 1)
+        resultat_soustraction4 = fraction8 - fraction9
+        self.assertEqual(resultat_soustraction4.numerator, 1)
+        self.assertEqual(resultat_soustraction4.denominator, 1)
+        with self.assertRaises(TypeError):
+            fraction1 - 0.1
 
         # __mul__
-        resultatMultiplication = fraction1 * fraction2
-        self.assertEqual(resultatMultiplication.numerator, 1)
-        self.assertEqual(resultatMultiplication.denominator, 2)
-        resultatMultiplication1 = fraction6 * fraction3
-        self.assertEqual(resultatMultiplication1.numerator, -2)
-        self.assertEqual(resultatMultiplication1.denominator, 3)
-        resultatMultiplication2 = fraction3 * fraction9
-        self.assertEqual(resultatMultiplication2.numerator, 1)
-        self.assertEqual(resultatMultiplication2.denominator, 1)
-        resultatMultiplication3 = fraction1 * fraction4
-        self.assertEqual(resultatMultiplication3.numerator, 0)
-        self.assertEqual(resultatMultiplication3.denominator, 1)
-        resultatMultiplication4 = fraction6 * fraction7
-        self.assertEqual(resultatMultiplication4.numerator, 6)
-        self.assertEqual(resultatMultiplication4.denominator, 1)
+        resultat_multiplication = fraction1 * fraction2
+        self.assertEqual(resultat_multiplication.numerator, 1)
+        self.assertEqual(resultat_multiplication.denominator, 2)
+        resultat_multiplication1 = fraction6 * fraction3
+        self.assertEqual(resultat_multiplication1.numerator, -2)
+        self.assertEqual(resultat_multiplication1.denominator, 3)
+        resultat_multiplication2 = fraction3 * fraction9
+        self.assertEqual(resultat_multiplication2.numerator, 1)
+        self.assertEqual(resultat_multiplication2.denominator, 1)
+        resultat_multiplication3 = fraction1 * fraction4
+        self.assertEqual(resultat_multiplication3.numerator, 0)
+        self.assertEqual(resultat_multiplication3.denominator, 1)
+        resultat_multiplication4 = fraction6 * fraction7
+        self.assertEqual(resultat_multiplication4.numerator, 6)
+        self.assertEqual(resultat_multiplication4.denominator, 1)
+        with self.assertRaises(TypeError):
+            fraction1 * 0.1
 
         # __truediv__
-        resultatDivision = fraction1 / fraction2
-        self.assertEqual(resultatDivision.numerator, 9)
-        self.assertEqual(resultatDivision.denominator, 8)
-        resultatDivision1 = fraction1 / fraction3
-        self.assertEqual(resultatDivision1.numerator, -9)
-        self.assertEqual(resultatDivision1.denominator, 4)
-        resultatDivision2 = fraction8 / fraction3
-        self.assertEqual(resultatDivision2.numerator, 6)
-        self.assertEqual(resultatDivision2.denominator, 1)
+        resultat_division = fraction1 / fraction2
+        self.assertEqual(resultat_division.numerator, 9)
+        self.assertEqual(resultat_division.denominator, 8)
+        resultat_division1 = fraction1 / fraction3
+        self.assertEqual(resultat_division1.numerator, -9)
+        self.assertEqual(resultat_division1.denominator, 4)
+        resultat_division2 = fraction8 / fraction3
+        self.assertEqual(resultat_division2.numerator, 6)
+        self.assertEqual(resultat_division2.denominator, 1)
         with self.assertRaises(ZeroDivisionError):
             fraction6 / fraction4
+        with self.assertRaises(TypeError):
+            fraction1 / 0.1
 
-        resultatDivision3 = fraction4 / fraction7
-        self.assertEqual(resultatDivision3.numerator, 0)
-        self.assertEqual(resultatDivision3.denominator, 1)
+        resultat_division3 = fraction4 / fraction7
+        self.assertEqual(resultat_division3.numerator, 0)
+        self.assertEqual(resultat_division3.denominator, 1)
 
 
         # __pow__
-        resultatPuissance = fraction1 ** 2
-        self.assertEqual(resultatPuissance.numerator, 9)
-        self.assertEqual(resultatPuissance.denominator, 16)
-        resultatPuissance1 = fraction3 ** 2
-        self.assertEqual(resultatPuissance1.numerator, 1)
-        self.assertEqual(resultatPuissance1.denominator, 9)
-        resultatPuissance2 = fraction1 ** 1
-        self.assertEqual(resultatPuissance2.numerator, 3)
-        self.assertEqual(resultatPuissance2.denominator, 4)
-        resultatPuissance3 = fraction1 ** 0
-        self.assertEqual(resultatPuissance3.numerator, 1)
-        self.assertEqual(resultatPuissance3.denominator, 1)
+        resultat_puissance = fraction1 ** 2
+        self.assertEqual(resultat_puissance.numerator, 9)
+        self.assertEqual(resultat_puissance.denominator, 16)
+        resultat_puissance1 = fraction3 ** 2
+        self.assertEqual(resultat_puissance1.numerator, 1)
+        self.assertEqual(resultat_puissance1.denominator, 9)
+        resultat_puissance2 = fraction1 ** 1
+        self.assertEqual(resultat_puissance2.numerator, 3)
+        self.assertEqual(resultat_puissance2.denominator, 4)
+        resultat_puissance3 = fraction1 ** 0
+        self.assertEqual(resultat_puissance3.numerator, 1)
+        self.assertEqual(resultat_puissance3.denominator, 1)
+        with self.assertRaises(TypeError):
+            fraction1 ** 0.1
 
         # __eq__
         self.assertTrue(fraction1 == fraction1)
         self.assertFalse(fraction8 == fraction6)
+        self.assertFalse(1.2 == fraction1)
 
 
-    def testProprietesFraction(self):
+    def test_propriete_fraction(self):
         fraction1 = Fraction(3, 4)
         fraction2 = Fraction(4, 3)
         fraction3 = Fraction(5, 1)
@@ -166,7 +179,7 @@ class TestFraction(unittest.TestCase):
         self.assertFalse(fraction1.is_adjacent_to(Fraction(7, 4)))
         self.assertTrue(fraction1.is_adjacent_to(Fraction(2, 3)))
 
-    def testConversionEnDecimal(self):
+    def test_conversion_decimal(self):
         fraction = Fraction(3, 4)
         fraction1 = Fraction(4,2)
         fraction3 = Fraction(-9,3)
